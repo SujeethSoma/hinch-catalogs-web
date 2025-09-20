@@ -29,7 +29,7 @@ export default function Toolbar({
             placeholder="Search catalogs…"
             value={valueSearch}
             onChange={(e) => onSearchChange(e.target.value)}
-            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#FF7A1A] focus:border-transparent"
+            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#FF7A1A] focus:border-[#FF7A1A] hover:border-orange-200"
           />
         </div>
 
@@ -38,7 +38,7 @@ export default function Toolbar({
           <select
             value={brand}
             onChange={(e) => onBrandChange(e.target.value)}
-            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#FF7A1A] focus:border-transparent bg-white"
+            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#FF7A1A] focus:border-[#FF7A1A] hover:border-orange-200 bg-white"
           >
             {brands.map((brandOption) => (
               <option key={brandOption} value={brandOption}>
@@ -54,7 +54,7 @@ export default function Toolbar({
           <select
             value={view}
             onChange={(e) => onViewChange(e.target.value as "Preview" | "Details")}
-            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#FF7A1A] focus:border-transparent bg-white"
+            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#FF7A1A] focus:border-[#FF7A1A] hover:border-orange-200 bg-white"
           >
             <option value="Preview">Preview</option>
             <option value="Details">Details</option>

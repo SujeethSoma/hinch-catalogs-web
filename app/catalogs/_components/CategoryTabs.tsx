@@ -28,7 +28,7 @@ export default function CategoryTabs({
                 px-4 py-2 rounded-full text-sm font-medium transition-colors
                 ${isSelected
                   ? 'bg-[#FF7A1A] text-white'
-                  : 'bg-white text-[#6B7280] hover:bg-gray-50 border border-gray-200'
+                  : 'bg-white text-[#6B7280] hover:bg-orange-50 hover:border-orange-200 border border-gray-200'
                 }
               `}
             >

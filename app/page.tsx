@@ -4,7 +4,7 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-[#F8FAFC] flex items-center justify-center">
       <div className="text-center">
-        <h1 className="text-4xl font-bold text-[#111827] mb-4">HINCH</h1>
+        <h1 className="text-4xl font-bold text-[#FF7A1A] mb-4">HINCH</h1>
         <p className="text-[#6B7280] mb-8">Premium Laminates & Materials</p>
         <Link
           href="/catalogs"

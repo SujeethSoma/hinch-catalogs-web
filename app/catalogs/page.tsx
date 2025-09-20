@@ -57,7 +57,7 @@ export default function CatalogsPage() {
     <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-6 bg-[#F8FAFC] min-h-screen">
       {/* Header */}
       <div className="flex justify-between items-center mb-8">
-        <h1 className="text-2xl font-bold text-[#111827]">HINCH</h1>
+        <h1 className="text-2xl font-bold text-[#FF7A1A]">HINCH</h1>
         <button className="bg-[#FF7A1A] hover:bg-[#FF8F40] text-white rounded-xl px-4 py-2 transition-colors focus:outline-none focus:ring-2 focus:ring-[#FF7A1A] focus:ring-offset-2">
           Get a Quote
         </button>

@@ -24,7 +24,7 @@ export default function CatalogCard({ item, view }: CatalogCardProps) {
   return (
     <div className="relative min-h-[360px] pb-16 overflow-visible rounded-2xl bg-white shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
       {/* Cover */}
-      <div className="h-48 w-full rounded-t-2xl bg-gradient-to-b from-orange-200 to-amber-100 overflow-hidden">
+      <div className="h-48 w-full rounded-t-2xl bg-gradient-to-b from-[#FF7A1A] to-[#FF8F40] overflow-hidden">
         {item.thumbnail ? (
           <img
             loading="lazy"
