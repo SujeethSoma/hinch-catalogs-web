@@ -2,6 +2,7 @@
 
 import { useState, useMemo, useEffect } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { CATALOGS, getUniqueCategories } from '../catalogs/_data/catalogs';
 import { CatalogItem } from '../catalogs/_types';
 import styles from './gemini.module.css';
@@ -67,13 +68,13 @@ export default function PreviewGeminiPage() {
         }`}
       >
         <nav className="container mx-auto px-6 py-5 flex justify-between items-center">
-          <a href="/" className={`text-3xl ${styles.fontSerif} font-bold tracking-wider text-gray-800`}>
+          <Link href="/" className={`text-3xl ${styles.fontSerif} font-bold tracking-wider text-gray-800`}>
             HINCH
-          </a>
+          </Link>
           
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-10">
-            <a href="/" className={`${styles.linkUnderline} text-gray-700 font-medium`}>Home</a>
+            <Link href="/" className={`${styles.linkUnderline} text-gray-700 font-medium`}>Home</Link>
             <a href="#catalogs" className={`${styles.linkUnderline} text-gray-700 font-medium`}>Catalogs</a>
             <a href="#contact" className={`${styles.linkUnderline} text-gray-700 font-medium`}>Contact</a>
           </div>
