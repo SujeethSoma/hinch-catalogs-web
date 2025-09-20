@@ -1,0 +1,118 @@
+/* Gemini UI Preview Styles - Scoped to prevent conflicts */
+
+:root {
+  --brand-orange: #F97316;
+  --brand-dark: #1f2937;
+}
+
+.geminiContainer {
+  font-family: var(--font-lato), sans-serif;
+  background-color: #ffffff;
+  color: var(--brand-dark);
+}
+
+/* Elegant serif font for headings */
+.fontSerif {
+  font-family: var(--font-playfair), serif;
+}
+
+/* Navbar style on scroll */
+.navbarScrolled {
+  background-color: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+/* Custom button style */
+.btn {
+  display: inline-block;
+  padding: 12px 32px;
+  border-radius: 9999px; /* pill shape */
+  font-weight: bold;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btnOrange {
+  background-color: var(--brand-orange);
+  color: white;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(249, 115, 22, 0.3);
+}
+
+/* New catalog card design */
+.catalogCard {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.catalogCard:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08);
+}
+
+/* Underline effect for links */
+.linkUnderline {
+  position: relative;
+  text-decoration: none;
+}
+
+.linkUnderline::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: -4px;
+  left: 0;
+  background-color: var(--brand-orange);
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+}
+
+.linkUnderline:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+/* Styles for filter controls */
+.filterBtn {
+  padding: 8px 20px;
+  border: 1px solid #e5e7eb;
+  border-radius: 9999px;
+  background-color: white;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.filterBtn.active, 
+.filterBtn:hover {
+  background-color: var(--brand-orange);
+  color: white;
+  border-color: var(--brand-orange);
+}
+
+.searchInput {
+  border: 1px solid #e5e7eb;
+  border-radius: 9999px;
+  padding: 8px 20px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.searchInput:focus {
+  outline: none;
+  border-color: var(--brand-orange);
+  box-shadow: 0 0 0 2px rgba(249, 115, 22, 0.2);
+}
+
+/* Preview banner */
+.previewBanner {
+  background: linear-gradient(135deg, #F97316, #FB923C);
+  color: white;
+  text-align: center;
+  padding: 8px 0;
+  font-size: 14px;
+  font-weight: 600;
+}
