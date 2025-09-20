@@ -9,11 +9,8 @@ import styles from './gemini.module.css';
 export default function PreviewGeminiPage() {
   const [search, setSearch] = useState('');
   const [currentFilter, setCurrentFilter] = useState('all');
-  const [currentPage, setCurrentPage] = useState(1);
   const [isScrolled, setIsScrolled] = useState(false);
   const [showPreviewBanner, setShowPreviewBanner] = useState(false);
-
-  const itemsPerPage = 6;
 
   // Get unique categories from data
   const categories = useMemo(() => getUniqueCategories(), []);
@@ -32,23 +29,13 @@ export default function PreviewGeminiPage() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Filter and paginate catalogs
+  // Filter catalogs (no pagination)
   const filteredCatalogs = useMemo(() => {
     return CATALOGS.filter((catalog: CatalogItem) => {
       const matchesCategory = currentFilter === 'all' || catalog.category === currentFilter;
       const matchesSearch = catalog.title.toLowerCase().includes(search.toLowerCase());
       return matchesCategory && matchesSearch;
     });
-  }, [search, currentFilter]);
-
-  const totalPages = Math.ceil(filteredCatalogs.length / itemsPerPage);
-  const start = (currentPage - 1) * itemsPerPage;
-  const end = start + itemsPerPage;
-  const paginatedCatalogs = filteredCatalogs.slice(start, end);
-
-  // Reset to page 1 when filters change
-  useEffect(() => {
-    setCurrentPage(1);
   }, [search, currentFilter]);
 
   const handlePreview = (item: CatalogItem) => {
@@ -158,43 +145,43 @@ export default function PreviewGeminiPage() {
             </div>
             
             {/* Catalog Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 md:gap-12">
-              {paginatedCatalogs.length === 0 ? (
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 md:gap-6">
+              {filteredCatalogs.length === 0 ? (
                 <p className="text-center text-gray-500 col-span-full">No catalogs found.</p>
               ) : (
-                paginatedCatalogs.map((catalog) => (
+                filteredCatalogs.map((catalog) => (
                   <div key={catalog.id} className={`${styles.catalogCard} rounded-lg overflow-hidden bg-white`}>
                     {catalog.thumbnail ? (
                       <Image
                         src={catalog.thumbnail}
                         alt={catalog.title}
-                        width={400}
-                        height={384}
-                        className="w-full h-96 object-cover"
+                        width={300}
+                        height={240}
+                        className="w-full h-48 object-cover"
                         onError={(e) => {
                           const target = e.target as HTMLImageElement;
-                          target.src = 'https://placehold.co/600x800/e5e7eb/1f2937?text=Hinch+Catalog';
+                          target.src = 'https://placehold.co/400x320/e5e7eb/1f2937?text=Hinch+Catalog';
                         }}
                       />
                     ) : (
-                      <div className="w-full h-96 bg-gradient-to-br from-orange-100 to-orange-200 flex items-center justify-center">
-                        <span className="text-gray-500 text-lg">No Preview</span>
+                      <div className="w-full h-48 bg-gradient-to-br from-orange-100 to-orange-200 flex items-center justify-center">
+                        <span className="text-gray-500 text-sm">No Preview</span>
                       </div>
                     )}
-                    <div className="p-6">
-                      <h3 className={`${styles.fontSerif} text-xl font-bold text-gray-800 mb-2`}>
+                    <div className="p-3">
+                      <h3 className={`${styles.fontSerif} text-lg font-bold text-gray-800 mb-1 line-clamp-1`}>
                         {catalog.title}
                       </h3>
-                      <p className="text-gray-600 mb-2 text-sm">{catalog.brand}</p>
-                      <p className="text-gray-600 mb-4 text-sm">{catalog.category}</p>
+                      <p className="text-gray-600 mb-1 text-xs">{catalog.brand}</p>
+                      <p className="text-gray-600 mb-2 text-xs">{catalog.category}</p>
                       {catalog.description && (
-                        <p className="text-gray-600 mb-4 text-sm line-clamp-2">{catalog.description}</p>
+                        <p className="text-gray-600 mb-3 text-xs line-clamp-2">{catalog.description}</p>
                       )}
-                      <div className="flex gap-2">
+                      <div className="flex gap-1">
                         {catalog.previewUrl && (
                           <button
                             onClick={() => handlePreview(catalog)}
-                            className="flex-1 bg-gray-100 hover:bg-gray-200 text-gray-800 rounded-lg px-3 py-2 text-sm font-medium transition-colors"
+                            className="flex-1 bg-gray-100 hover:bg-gray-200 text-gray-800 rounded-md px-2 py-1 text-xs font-medium transition-colors"
                           >
                             Preview
                           </button>
@@ -202,7 +189,7 @@ export default function PreviewGeminiPage() {
                         {catalog.downloadUrl && (
                           <button
                             onClick={() => handleDownload(catalog)}
-                            className="flex-1 bg-orange-600 hover:bg-orange-700 text-white rounded-lg px-3 py-2 text-sm font-medium transition-colors"
+                            className="flex-1 bg-orange-600 hover:bg-orange-700 text-white rounded-md px-2 py-1 text-xs font-medium transition-colors"
                           >
                             Download
                           </button>
@@ -214,28 +201,6 @@ export default function PreviewGeminiPage() {
               )}
             </div>
 
-            {/* Pagination Controls */}
-            {totalPages > 1 && (
-              <div className="flex justify-center items-center gap-4 mt-16">
-                <button 
-                  onClick={() => setCurrentPage(Math.max(1, currentPage - 1))}
-                  disabled={currentPage === 1}
-                  className="font-bold text-gray-500 hover:text-orange-600 disabled:text-gray-300 disabled:cursor-not-allowed"
-                >
-                  ← Previous
-                </button>
-                <span className="text-gray-700">
-                  Page {currentPage} of {totalPages}
-                </span>
-                <button 
-                  onClick={() => setCurrentPage(Math.min(totalPages, currentPage + 1))}
-                  disabled={currentPage === totalPages}
-                  className="font-bold text-gray-500 hover:text-orange-600 disabled:text-gray-300 disabled:cursor-not-allowed"
-                >
-                  Next →
-                </button>
-              </div>
-            )}
           </div>
         </section>
       </main>
