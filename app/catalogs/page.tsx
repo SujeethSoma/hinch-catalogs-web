@@ -99,7 +99,7 @@ export default function CatalogsPage() {
           <div className="text-6xl mb-4">📋</div>
           <h2 className="text-xl font-semibold text-[#111827] mb-2">No catalogs found</h2>
           <p className="text-[#6B7280] text-center max-w-md">
-            Try adjusting your search terms or filters to find what you're looking for.
+            Try adjusting your search terms or filters to find what you&apos;re looking for.
           </p>
         </div>
       )}

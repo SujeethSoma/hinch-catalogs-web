@@ -1,5 +1,6 @@
 "use client";
 
+import Image from 'next/image';
 import { CatalogItem } from '../_types';
 
 interface CatalogCardProps {
@@ -26,11 +27,13 @@ export default function CatalogCard({ item, view }: CatalogCardProps) {
       {/* Cover */}
       <div className="h-48 w-full rounded-t-2xl bg-gradient-to-b from-[#FF7A1A] to-[#FF8F40] overflow-hidden">
         {item.thumbnail ? (
-          <img
-            loading="lazy"
-            alt={item.title}
+          <Image
             src={item.thumbnail}
+            alt={item.title}
+            width={400}
+            height={192}
             className="h-48 w-full object-cover rounded-t-2xl"
+            priority={false}
           />
         ) : null}
       </div>
