@@ -54,7 +54,7 @@ export default function CatalogsPage() {
   }, [search, brand, category]);
 
   return (
-    <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-6 bg-[#F8FAFC] min-h-screen">
+    <div className="w-full px-4 sm:px-6 lg:px-8 py-6 bg-[#F8FAFC] min-h-screen">
       {/* Header */}
       <div className="flex justify-between items-center mb-8">
         <h1 className="text-2xl font-bold text-[#FF7A1A]">HINCH</h1>
