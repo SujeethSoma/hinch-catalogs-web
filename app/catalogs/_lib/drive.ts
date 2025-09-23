@@ -66,7 +66,7 @@ export async function loadCatalogData(): Promise<CatalogItem[]> {
       'Wall_Panels.json'
     ];
 
-    // Fetch all category files from GitHub and combine the data
+    // Fetch all category files from GitHub and combine the data (Vercel deployment test)
     const allPromises = categoryFiles.map(async (filename) => {
       try {
         const response = await fetch(`https://raw.githubusercontent.com/SujeethSoma/hinch-catalogs-web/main/public/catalogue_json/${filename}`);
