@@ -2,18 +2,13 @@ import { CatalogItem } from '../_types';
 
 // Interface for the raw JSON data from GitHub
 interface RawCatalogData {
-  uniqueId?: string;
-  name?: string;
-  'Catalogues Name'?: string;
-  'Catalogues Name '?: string;
+  title?: string;
   brand?: string;
-  Brand?: string;
-  Brands?: string;
   category?: string;
-  Category?: string;
   driveLink?: string;
-  'Catalouge links'?: string;
-  'Catalogues Links'?: string;
+  image?: string;
+  previewUrl?: string;
+  downloadUrl?: string;
 }
 
 export function extractDriveId(url: string): string {
@@ -52,31 +47,54 @@ export function toDriveDirectPdf(url: string): string {
 
 export async function loadCatalogData(): Promise<CatalogItem[]> {
   try {
-    // Fetch from the main catalogs.json file
-    const response = await fetch('https://raw.githubusercontent.com/SujeethSoma/hinch-catalogs-web/main/app/catalogs/_data/real-catalogs.json');
-    
-    if (!response.ok) {
-      throw new Error(`Failed to fetch data: ${response.status}`);
-    }
-    
-    const rawData = await response.json();
-    
+    // List of all category JSON files from the catalogue_json directory
+    const categoryFiles = [
+      '360_Louvers.json',
+      'Acrylic_Laminates.json',
+      'Decorative_Laminates.json',
+      'Doors.json',
+      'Edge_Banding.json',
+      'Hardware.json',
+      'Liners.json',
+      'Louvers.json',
+      'Moulders.json',
+      'PVC_Laminates.json',
+      'Solid_Colour_Laminates.json',
+      'Thermo_Laminates.json',
+      'Ti_Patti.json',
+      'Veeners.json',
+      'Wall_Panels.json'
+    ];
+
+    // Fetch all category files and combine the data
+    const allPromises = categoryFiles.map(async (filename) => {
+      try {
+        const response = await fetch(`https://raw.githubusercontent.com/SujeethSoma/hinch-catalogs-web/main/catalogue_json/${filename}`);
+        if (!response.ok) {
+          console.warn(`Failed to fetch ${filename}: ${response.status}`);
+          return [];
+        }
+        return await response.json();
+      } catch (error) {
+        console.warn(`Error fetching ${filename}:`, error);
+        return [];
+      }
+    });
+
+    const allCategoryData = await Promise.all(allPromises);
+    const rawData = allCategoryData.flat();
+
     // Transform the JSON structure into our CatalogItem format
     return rawData.map((item: RawCatalogData, index: number) => {
-      const driveLink = item.driveLink || item['Catalouge links'] || item['Catalogues Links'];
-      const name = item.name || item['Catalogues Name'] || item['Catalogues Name '];
-      const brand = item.brand || item.Brand || item.Brands;
-      const category = item.category || item.Category;
-      
       return {
-        id: item.uniqueId || `catalog-${index}`,
-        title: name || 'Untitled Catalog',
-        brand: brand || 'Unknown Brand',
-        category: category || 'Uncategorized',
-        thumbnail: driveLink ? thumbUrl(driveLink) || undefined : undefined,
-        previewUrl: driveLink ? previewUrl(driveLink) : undefined,
-        downloadUrl: driveLink ? downloadUrl(driveLink) : undefined,
-        description: `Explore our comprehensive ${category || 'Uncategorized'} collection from ${brand || 'Unknown Brand'}. This catalog showcases premium materials and finishes for modern interior design.`
+        id: `catalog-${index}`,
+        title: item.title || 'Untitled Catalog',
+        brand: item.brand || 'Unknown Brand',
+        category: item.category || 'Uncategorized',
+        thumbnail: item.image || (item.driveLink ? thumbUrl(item.driveLink) || undefined : undefined),
+        previewUrl: item.previewUrl || (item.driveLink ? previewUrl(item.driveLink) : undefined),
+        downloadUrl: item.downloadUrl || (item.driveLink ? downloadUrl(item.driveLink) : undefined),
+        description: `Explore our comprehensive ${item.category || 'Uncategorized'} collection from ${item.brand || 'Unknown Brand'}. This catalog showcases premium materials and finishes for modern interior design.`
       };
     });
   } catch (error) {
