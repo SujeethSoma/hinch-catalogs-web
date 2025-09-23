@@ -1,9 +1,11 @@
 [
   {
-    "title": "Untitled Catalog",
-    "brand": "",
+    "title": "Rang Bern Thermo Lam",
+    "brand": "Rang",
     "category": "Thermo Laminates",
-    "driveLink": "",
-    "image": ""
+    "driveLink": "https://drive.google.com/file/d/10VVL2a0EW8DmYPVhe8CcBEo7lwN3JWGA/view?usp=sharing",
+    "previewUrl": "https://drive.google.com/file/d/10VVL2a0EW8DmYPVhe8CcBEo7lwN3JWGA/preview",
+    "downloadUrl": "https://drive.google.com/uc?export=download&id=10VVL2a0EW8DmYPVhe8CcBEo7lwN3JWGA",
+    "image": "https://drive.google.com/thumbnail?id=10VVL2a0EW8DmYPVhe8CcBEo7lwN3JWGA&sz=w1000"
   }
 ]
