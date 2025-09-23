@@ -3,7 +3,7 @@
 import { useState, useMemo, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { CATALOGS, getUniqueCategories } from '../catalogs/_data/catalogs';
+import { loadCatalogData } from '../catalogs/_lib/drive';
 import { CatalogItem } from '../catalogs/_types';
 import styles from './gemini.module.css';
 
@@ -12,9 +12,54 @@ export default function PreviewGeminiPage() {
   const [currentFilter, setCurrentFilter] = useState('all');
   const [isScrolled, setIsScrolled] = useState(false);
   const [showPreviewBanner, setShowPreviewBanner] = useState(false);
+  const [catalogs, setCatalogs] = useState<CatalogItem[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  // Load catalog data from GitHub
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        setLoading(true);
+        const data = await loadCatalogData();
+        setCatalogs(data);
+      } catch (error) {
+        console.error('Failed to load catalog data:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  // Helper function for getting unique categories
+  const getUniqueCategories = (): string[] => {
+    const categoryOrder = [
+      "all",
+      "Acrylic Laminates",
+      "Solid Colour Laminates", 
+      "360 Louvers",
+      "Decorative Laminates",
+      "Doors",
+      "Edge Banding",
+      "Hardware",
+      "Liners",
+      "Louvers",
+      "Mouldings",
+      "PVC Laminates",
+      "Thermo Laminates",
+      "Veneers",
+      "Wall Panels"
+    ] as const;
+    
+    const categories = Array.from(new Set(catalogs.map(item => item.category)));
+    const orderedCategories = categoryOrder.filter(cat => cat === 'all' || categories.includes(cat as string));
+    const remainingCategories = categories.filter(cat => !categoryOrder.includes(cat as typeof categoryOrder[number])).sort();
+    return ['all', ...orderedCategories.slice(1), ...remainingCategories];
+  };
 
   // Get unique categories from data
-  const categories = useMemo(() => getUniqueCategories(), []);
+  const categories = useMemo(() => getUniqueCategories(), [catalogs]);
 
   // Show preview banner if environment variable is set
   useEffect(() => {
@@ -32,12 +77,12 @@ export default function PreviewGeminiPage() {
 
   // Filter catalogs (no pagination)
   const filteredCatalogs = useMemo(() => {
-    return CATALOGS.filter((catalog: CatalogItem) => {
+    return catalogs.filter((catalog: CatalogItem) => {
       const matchesCategory = currentFilter === 'all' || catalog.category === currentFilter;
       const matchesSearch = catalog.title.toLowerCase().includes(search.toLowerCase());
       return matchesCategory && matchesSearch;
     });
-  }, [search, currentFilter]);
+  }, [catalogs, search, currentFilter]);
 
   const handlePreview = (item: CatalogItem) => {
     if (item.previewUrl) {
@@ -50,6 +95,60 @@ export default function PreviewGeminiPage() {
       window.open(item.downloadUrl, '_blank', 'noopener,noreferrer');
     }
   };
+
+  if (loading) {
+    return (
+      <div className={`${styles.geminiContainer} antialiased`}>
+        {/* Preview Banner */}
+        {showPreviewBanner && (
+          <div className={styles.previewBanner}>
+            🎨 Gemini UI Preview enabled - This is a test version of the new design
+          </div>
+        )}
+
+        {/* Header & Navigation */}
+        <header 
+          id="header" 
+          className={`sticky top-0 z-50 transition-all duration-300 ${
+            isScrolled ? styles.navbarScrolled : ''
+          }`}
+        >
+          <nav className="container mx-auto px-6 py-5 flex justify-between items-center">
+            <Link href="/" className={`text-3xl ${styles.fontSerif} font-bold tracking-wider text-gray-800`}>
+              HINCH
+            </Link>
+            
+            {/* Desktop Menu */}
+            <div className="hidden md:flex items-center space-x-10">
+              <Link href="/" className={`${styles.linkUnderline} text-gray-700 font-medium`}>Home</Link>
+              <a href="#catalogs" className={`${styles.linkUnderline} text-gray-700 font-medium`}>Catalogs</a>
+              <a href="#contact" className={`${styles.linkUnderline} text-gray-700 font-medium`}>Contact</a>
+            </div>
+
+            {/* Mobile Menu Button */}
+            <button className="md:hidden text-gray-800">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="4" x2="20" y1="12" y2="12"/>
+                <line x1="4" x2="20" y1="6" y2="6"/>
+                <line x1="4" x2="20" y1="18" y2="18"/>
+              </svg>
+            </button>
+          </nav>
+        </header>
+
+        <main>
+          {/* Loading State */}
+          <div className="flex flex-col items-center justify-center py-32">
+            <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-orange-500 mb-6"></div>
+            <h2 className="text-2xl font-semibold text-gray-800 mb-3">Loading Catalogs</h2>
+            <p className="text-gray-600 text-center max-w-md">
+              Fetching the latest catalog data from our repository...
+            </p>
+          </div>
+        </main>
+      </div>
+    );
+  }
 
   return (
     <div className={`${styles.geminiContainer} antialiased`}>
