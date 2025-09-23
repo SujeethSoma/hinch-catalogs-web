@@ -1,32 +1,110 @@
 [
   {
-    "Catalogues_Name": "Euro Pathik"
+    "title": "Euro Pathik Sapphire_Brochure",
+    "brand": "Unknown Brand",
+    "category": "Uncategorized",
+    "driveLink": "",
+    "previewUrl": "",
+    "downloadUrl": "",
+    "image": ""
   },
   {
-    "Catalogues_Name": "Vivre"
+    "title": "Vivre AcryVibe 6H Anit-Scratch Acrylic Laminates E Catalogue",
+    "brand": "Unknown Brand",
+    "category": "Uncategorized",
+    "driveLink": "",
+    "previewUrl": "",
+    "downloadUrl": "",
+    "image": ""
   },
   {
-    "Catalogues_Name": "MigLam"
+    "title": "Mig lam E-CATALOGUE",
+    "brand": "Unknown Brand",
+    "category": "Uncategorized",
+    "driveLink": "",
+    "previewUrl": "",
+    "downloadUrl": "",
+    "image": ""
   },
   {
-    "Catalogues_Name": "Magnus"
+    "title": "MAGNUS Acrylic",
+    "brand": "Unknown Brand",
+    "category": "Uncategorized",
+    "driveLink": "",
+    "previewUrl": "",
+    "downloadUrl": "",
+    "image": ""
   },
   {
-    "Catalogues_Name": "Laica"
+    "title": "LAICA-DECOR-Acrylic",
+    "brand": "Unknown Brand",
+    "category": "Uncategorized",
+    "driveLink": "",
+    "previewUrl": "",
+    "downloadUrl": "",
+    "image": ""
   },
   {
-    "Catalogues_Name": "Rang"
+    "title": "Rang Litia Acrylic",
+    "brand": "Unknown Brand",
+    "category": "Uncategorized",
+    "driveLink": "",
+    "previewUrl": "",
+    "downloadUrl": "",
+    "image": ""
   },
   {
-    "Catalogues_Name": "Acry Gold"
+    "title": "Rang Faded 6.0 Acrlic",
+    "brand": "Unknown Brand",
+    "category": "Uncategorized",
+    "driveLink": "",
+    "previewUrl": "",
+    "downloadUrl": "",
+    "image": ""
   },
   {
-    "Catalogues_Name": "Laica Decor"
+    "title": "Rang Maskara 6H Acrylic",
+    "brand": "Unknown Brand",
+    "category": "Uncategorized",
+    "driveLink": "",
+    "previewUrl": "",
+    "downloadUrl": "",
+    "image": ""
   },
   {
-    "Catalogues_Name": "Alimo Acrylic"
+    "title": "ACRY-GOLD 6H Acrylic",
+    "brand": "Unknown Brand",
+    "category": "Uncategorized",
+    "driveLink": "",
+    "previewUrl": "",
+    "downloadUrl": "",
+    "image": ""
   },
   {
-    "Catalogues_Name": "Bravio"
+    "title": "LAICA_DECOR Acrylic",
+    "brand": "Unknown Brand",
+    "category": "Uncategorized",
+    "driveLink": "",
+    "previewUrl": "",
+    "downloadUrl": "",
+    "image": ""
+  },
+  {
+    "title": "Alimo Acrylic",
+    "brand": "Unknown Brand",
+    "category": "Uncategorized",
+    "driveLink": "",
+    "previewUrl": "",
+    "downloadUrl": "",
+    "image": ""
+  },
+  {
+    "title": "Bravio Asteria",
+    "brand": "Unknown Brand",
+    "category": "Uncategorized",
+    "driveLink": "",
+    "previewUrl": "",
+    "downloadUrl": "",
+    "image": ""
   }
 ]

@@ -1,8 +1,11 @@
 [
   {
-    "Catalogues_Name": "Euro Pathik Chisel-Flex-Catalgoue",
-    "Catalouge_links": "https://drive.google.com/file/d/1xwBDcO42hqwbwODLWKzgHNajXUjLAHqd/view?usp=sharing",
-    "Category": "360 Louvers",
-    "Brand": "Euro Pathik"
+    "title": "Euro Pathik Chisel-Flex-Catalgoue",
+    "brand": "Euro Pathik",
+    "category": "360 Louvers",
+    "driveLink": "https://drive.google.com/file/d/1xwBDcO42hqwbwODLWKzgHNajXUjLAHqd/view?usp=sharing",
+    "previewUrl": "https://drive.google.com/file/d/1xwBDcO42hqwbwODLWKzgHNajXUjLAHqd/preview",
+    "downloadUrl": "https://drive.google.com/uc?export=download&id=1xwBDcO42hqwbwODLWKzgHNajXUjLAHqd",
+    "image": "https://drive.google.com/thumbnail?id=1xwBDcO42hqwbwODLWKzgHNajXUjLAHqd&sz=w1000"
   }
 ]
