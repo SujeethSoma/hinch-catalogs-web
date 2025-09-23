@@ -1,23 +1,29 @@
 [
   {
-    "title": "Untitled Catalog",
-    "brand": "",
+    "title": "EURO_PRATIK_EXCLUSO_VENEER_ PVC",
+    "brand": "Euro Pathik",
     "category": "PVC Laminates",
-    "driveLink": "",
-    "image": ""
+    "driveLink": "https://drive.google.com/file/d/15LHqGe8lO7CKPm2OmDI5xRYf5E99keR7/view?usp=sharing",
+    "previewUrl": "https://drive.google.com/file/d/15LHqGe8lO7CKPm2OmDI5xRYf5E99keR7/preview",
+    "downloadUrl": "https://drive.google.com/uc?export=download&id=15LHqGe8lO7CKPm2OmDI5xRYf5E99keR7",
+    "image": "https://drive.google.com/thumbnail?id=15LHqGe8lO7CKPm2OmDI5xRYf5E99keR7&sz=w1000"
   },
   {
-    "title": "Untitled Catalog",
-    "brand": "",
+    "title": "Royal touch",
+    "brand": "Roya Touch",
     "category": "PVC Laminates",
-    "driveLink": "",
-    "image": ""
+    "driveLink": "https://drive.google.com/file/d/1KB_DvrYlYyGKQ7rtXGL2S3sAPClRVwkm/view?usp=sharing",
+    "previewUrl": "https://drive.google.com/file/d/1KB_DvrYlYyGKQ7rtXGL2S3sAPClRVwkm/preview",
+    "downloadUrl": "https://drive.google.com/uc?export=download&id=1KB_DvrYlYyGKQ7rtXGL2S3sAPClRVwkm",
+    "image": "https://drive.google.com/thumbnail?id=1KB_DvrYlYyGKQ7rtXGL2S3sAPClRVwkm&sz=w1000"
   },
   {
-    "title": "Untitled Catalog",
-    "brand": "",
+    "title": "Stanley - PVC Folder",
+    "brand": "Stanley",
     "category": "PVC Laminates",
-    "driveLink": "",
-    "image": ""
+    "driveLink": "https://drive.google.com/file/d/18_1ytIoZtDYv7mXqDxcLTS5XmqB7s3-S/view?usp=sharing",
+    "previewUrl": "https://drive.google.com/file/d/18_1ytIoZtDYv7mXqDxcLTS5XmqB7s3-S/preview",
+    "downloadUrl": "https://drive.google.com/uc?export=download&id=18_1ytIoZtDYv7mXqDxcLTS5XmqB7s3-S",
+    "image": "https://drive.google.com/thumbnail?id=18_1ytIoZtDYv7mXqDxcLTS5XmqB7s3-S&sz=w1000"
   }
 ]
