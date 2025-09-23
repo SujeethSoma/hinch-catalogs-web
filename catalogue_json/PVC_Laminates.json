@@ -1,20 +1,23 @@
 [
   {
-    "Catalogues_Name": "EURO_PRATIK_EXCLUSO_VENEER_ PVC ",
-    "Catalouge_links": "https://drive.google.com/file/d/15LHqGe8lO7CKPm2OmDI5xRYf5E99keR7/view?usp=sharing",
+    "Catalogues Name": "EURO_PRATIK_EXCLUSO_VENEER_ PVC ",
+    "Catalouge links": "https://drive.google.com/file/d/15LHqGe8lO7CKPm2OmDI5xRYf5E99keR7/view?usp=sharing",
     "Category": "PVC Laminates",
-    "Brand": "Euro Pathik"
+    "Brand": "Euro Pathik",
+    "Image_URL": ""
   },
   {
-    "Catalogues_Name": "Royal touch ",
-    "Catalouge_links": "https://drive.google.com/file/d/1KB_DvrYlYyGKQ7rtXGL2S3sAPClRVwkm/view?usp=sharing",
+    "Catalogues Name": "Royal touch ",
+    "Catalouge links": "https://drive.google.com/file/d/1KB_DvrYlYyGKQ7rtXGL2S3sAPClRVwkm/view?usp=sharing",
     "Category": "PVC Laminates",
-    "Brand": "Roya Touch"
+    "Brand": "Roya Touch",
+    "Image_URL": ""
   },
   {
-    "Catalogues_Name": "Stanley - PVC Folder",
-    "Catalouge_links": "https://drive.google.com/file/d/18_1ytIoZtDYv7mXqDxcLTS5XmqB7s3-S/view?usp=sharing",
+    "Catalogues Name": "Stanley - PVC Folder",
+    "Catalouge links": "https://drive.google.com/file/d/18_1ytIoZtDYv7mXqDxcLTS5XmqB7s3-S/view?usp=sharing",
     "Category": "PVC Laminates",
-    "Brand": "Stanley"
+    "Brand": "Stanley",
+    "Image_URL": ""
   }
 ]
