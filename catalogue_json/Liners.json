@@ -1,37 +1,37 @@
 [
   {
-    "Catalogues Name": "Euro Pathik Linear_Catalog ",
-    "Catalouge links": "https://drive.google.com/file/d/19sH8B2tAbIrbZRtbkwG1QKrViPKbIWxi/view?usp=sharing",
-    "Category": "Liners",
-    "Brands": "Euro Pathik",
-    "Image_URL": ""
+    "title": "Untitled Catalog",
+    "brand": "Euro Pathik",
+    "category": "Liners",
+    "driveLink": "",
+    "image": ""
   },
   {
-    "Catalogues Name": "Prodek Touch Title & inside Catlouge",
-    "Catalouge links": "https://drive.google.com/file/d/1cIPm65FIjgGIkOQ1SeMKFZkgSwzGbErQ/view?usp=sharing",
-    "Category": "Liners",
-    "Brands": "Prodeck",
-    "Image_URL": ""
+    "title": "Untitled Catalog",
+    "brand": "Prodeck",
+    "category": "Liners",
+    "driveLink": "",
+    "image": ""
   },
   {
-    "Catalogues Name": "Miglam",
-    "Catalouge links": "https://drive.google.com/file/d/1dsUM9pL8iQQVkWJ8lYCoeFJtdQ6roOxV/view?usp=sharing",
-    "Category": "Liners",
-    "Brands": "Miglam",
-    "Image_URL": ""
+    "title": "Untitled Catalog",
+    "brand": "Miglam",
+    "category": "Liners",
+    "driveLink": "",
+    "image": ""
   },
   {
-    "Catalogues Name": "MerinoLiner ",
-    "Catalouge links": "https://drive.google.com/file/d/1A5LX2IjluCUdfdNSK8giC7wDBA7tA5LN/view?usp=sharing",
-    "Category": "Liners",
-    "Brands": "Merino",
-    "Image_URL": ""
+    "title": "Untitled Catalog",
+    "brand": "Merino",
+    "category": "Liners",
+    "driveLink": "",
+    "image": ""
   },
   {
-    "Catalogues Name": "Stylam Liner",
-    "Catalouge links": "https://drive.google.com/file/d/1N4iGjGKwPv8XZvgwNFHeRxx7--9G08VY/view?usp=sharing",
-    "Category": "Liners",
-    "Brands": "Stylam",
-    "Image_URL": ""
+    "title": "Untitled Catalog",
+    "brand": "Stylam",
+    "category": "Liners",
+    "driveLink": "",
+    "image": ""
   }
 ]
