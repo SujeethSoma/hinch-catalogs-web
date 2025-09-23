@@ -2,10 +2,13 @@ import { CatalogItem } from '../_types';
 
 // Interface for the raw JSON data from GitHub
 interface RawCatalogData {
-  Catalogues_Name?: string;
-  Catalogues_Links?: string;
-  Category?: string;
-  Brands?: string;
+  title?: string;
+  brand?: string;
+  category?: string;
+  driveLink?: string;
+  image?: string;
+  previewUrl?: string;
+  downloadUrl?: string;
 }
 
 export function extractDriveId(url: string): string {
@@ -83,20 +86,15 @@ export async function loadCatalogData(): Promise<CatalogItem[]> {
 
     // Transform the JSON structure into our CatalogItem format
     return rawData.map((item: RawCatalogData, index: number) => {
-      const name = item.Catalogues_Name;
-      const brand = item.Brands;
-      const category = item.Category;
-      const downloadLink = item.Catalogues_Links;
-      
       return {
         id: `catalog-${index}`,
-        title: name || 'Untitled Catalog',
-        brand: brand || 'Unknown Brand',
-        category: category || 'Uncategorized',
-        thumbnail: downloadLink ? thumbUrl(downloadLink) || undefined : undefined,
-        previewUrl: downloadLink ? previewUrl(downloadLink) : undefined,
-        downloadUrl: downloadLink ? downloadUrl(downloadLink) : undefined,
-        description: `Explore our comprehensive ${category || 'Uncategorized'} collection from ${brand || 'Unknown Brand'}. This catalog showcases premium materials and finishes for modern interior design.`
+        title: item.title || 'Untitled Catalog',
+        brand: item.brand || 'Unknown Brand',
+        category: item.category || 'Uncategorized',
+        thumbnail: item.image || (item.driveLink ? thumbUrl(item.driveLink) || undefined : undefined),
+        previewUrl: item.previewUrl || (item.driveLink ? previewUrl(item.driveLink) : undefined),
+        downloadUrl: item.downloadUrl || (item.driveLink ? downloadUrl(item.driveLink) : undefined),
+        description: `Explore our comprehensive ${item.category || 'Uncategorized'} collection from ${item.brand || 'Unknown Brand'}. This catalog showcases premium materials and finishes for modern interior design.`
       };
     });
   } catch (error) {
