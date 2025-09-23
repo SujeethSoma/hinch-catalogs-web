@@ -47,7 +47,7 @@ export function toDriveDirectPdf(url: string): string {
 
 export async function loadCatalogData(): Promise<CatalogItem[]> {
   try {
-    // List of all category JSON files from the catalogue_json directory
+    // List of all category JSON files from the local catalogue_json directory
     const categoryFiles = [
       '360_Louvers.json',
       'Acrylic_Laminates.json',
@@ -66,10 +66,10 @@ export async function loadCatalogData(): Promise<CatalogItem[]> {
       'Wall_Panels.json'
     ];
 
-    // Fetch all category files and combine the data
+    // Fetch all category files from local directory and combine the data
     const allPromises = categoryFiles.map(async (filename) => {
       try {
-        const response = await fetch(`https://raw.githubusercontent.com/SujeethSoma/hinch-catalogs-web/main/catalogue_json/${filename}`);
+        const response = await fetch(`/catalogue_json/${filename}`);
         if (!response.ok) {
           console.warn(`Failed to fetch ${filename}: ${response.status}`);
           return [];
