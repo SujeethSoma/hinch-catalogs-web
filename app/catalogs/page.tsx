@@ -20,12 +20,15 @@ export default function CatalogsPage() {
   useEffect(() => {
     const fetchData = async () => {
       try {
+        console.log('Page: Starting to fetch catalog data...');
         setLoading(true);
         setError(null);
         const data = await loadCatalogData();
+        console.log('Page: Received data:', data.length, 'items');
+        console.log('Page: First few items:', data.slice(0, 3));
         setCatalogs(data);
       } catch (error) {
-        console.error('Failed to load catalog data:', error);
+        console.error('Page: Failed to load catalog data:', error);
         setError('Failed to load catalog data. Please try again later.');
       } finally {
         setLoading(false);

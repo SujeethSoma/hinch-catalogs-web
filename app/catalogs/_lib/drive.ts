@@ -47,6 +47,8 @@ export function toDriveDirectPdf(url: string): string {
 
 export async function loadCatalogData(): Promise<CatalogItem[]> {
   try {
+    console.log('Starting to load catalog data...');
+    
     // List of all category JSON files from GitHub
     const categoryFiles = [
       '360_Louvers.json',
@@ -66,15 +68,21 @@ export async function loadCatalogData(): Promise<CatalogItem[]> {
       'Wall_Panels.json'
     ];
 
+    console.log(`Fetching ${categoryFiles.length} category files...`);
+
     // Fetch all category files and combine the data
     const allPromises = categoryFiles.map(async (filename) => {
       try {
-        const response = await fetch(`https://raw.githubusercontent.com/SujeethSoma/hinch-catalogs-web/main/catalogue_json/${filename}`);
+        const url = `https://raw.githubusercontent.com/SujeethSoma/hinch-catalogs-web/main/catalogue_json/${filename}`;
+        console.log(`Fetching ${filename} from ${url}`);
+        const response = await fetch(url);
         if (!response.ok) {
           console.warn(`Failed to fetch ${filename}: ${response.status}`);
           return [];
         }
-        return await response.json();
+        const data = await response.json();
+        console.log(`Successfully fetched ${filename}: ${data.length} items`);
+        return data;
       } catch (error) {
         console.warn(`Error fetching ${filename}:`, error);
         return [];
@@ -83,10 +91,12 @@ export async function loadCatalogData(): Promise<CatalogItem[]> {
 
     const allCategoryData = await Promise.all(allPromises);
     const rawData = allCategoryData.flat();
+    console.log(`Total raw data items: ${rawData.length}`);
 
     // Transform the JSON structure into our CatalogItem format
-    return rawData.map((item: RawCatalogData, index: number) => {
-      return {
+    console.log('Transforming data...');
+    const transformedData = rawData.map((item: RawCatalogData, index: number) => {
+      const transformed = {
         id: `catalog-${index}`,
         title: item.title || 'Untitled Catalog',
         brand: item.brand || 'Unknown Brand',
@@ -96,7 +106,16 @@ export async function loadCatalogData(): Promise<CatalogItem[]> {
         downloadUrl: item.downloadUrl || (item.driveLink ? downloadUrl(item.driveLink) : undefined),
         description: `Explore our comprehensive ${item.category || 'Uncategorized'} collection from ${item.brand || 'Unknown Brand'}. This catalog showcases premium materials and finishes for modern interior design.`
       };
+      
+      if (index < 3) {
+        console.log(`Transformed item ${index}:`, transformed);
+      }
+      
+      return transformed;
     });
+    
+    console.log(`Successfully transformed ${transformedData.length} items`);
+    return transformedData;
   } catch (error) {
     console.error('Error loading catalog data from GitHub:', error);
     return [];
