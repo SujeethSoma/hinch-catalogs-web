@@ -1,32 +1,50 @@
 [
   {
-    "Catalogues_Name": "Euro Pathik"
+    "Catalogues Name ": "Euro Pathik",
+    "Image_URL": ""
   },
   {
-    "Catalogues_Name": "Vivre"
+    "Catalogues Name ": "Vivre",
+    "Image_URL": ""
   },
   {
-    "Catalogues_Name": "MigLam"
+    "Catalogues Name ": "MigLam",
+    "Image_URL": ""
   },
   {
-    "Catalogues_Name": "Magnus"
+    "Catalogues Name ": "Magnus",
+    "Image_URL": ""
   },
   {
-    "Catalogues_Name": "Laica"
+    "Catalogues Name ": "Laica",
+    "Image_URL": ""
   },
   {
-    "Catalogues_Name": "Rang"
+    "Catalogues Name ": "Rang",
+    "Image_URL": ""
   },
   {
-    "Catalogues_Name": "Acry Gold"
+    "Catalogues Name ": "Rang",
+    "Image_URL": ""
   },
   {
-    "Catalogues_Name": "Laica Decor"
+    "Catalogues Name ": "Rang",
+    "Image_URL": ""
   },
   {
-    "Catalogues_Name": "Alimo Acrylic"
+    "Catalogues Name ": "Acry Gold",
+    "Image_URL": ""
   },
   {
-    "Catalogues_Name": "Bravio"
+    "Catalogues Name ": "Laica Decor",
+    "Image_URL": ""
+  },
+  {
+    "Catalogues Name ": "Alimo Acrylic",
+    "Image_URL": ""
+  },
+  {
+    "Catalogues Name ": "Bravio",
+    "Image_URL": ""
   }
 ]
