@@ -32,8 +32,8 @@ export default function PreviewGeminiPage() {
     fetchData();
   }, []);
 
-  // Helper function for getting unique categories
-  const getUniqueCategories = (): string[] => {
+  // Get unique categories from data
+  const categories = useMemo(() => {
     const categoryOrder = [
       "all",
       "Acrylic Laminates",
@@ -56,10 +56,7 @@ export default function PreviewGeminiPage() {
     const orderedCategories = categoryOrder.filter(cat => cat === 'all' || categories.includes(cat as string));
     const remainingCategories = categories.filter(cat => !categoryOrder.includes(cat as typeof categoryOrder[number])).sort();
     return ['all', ...orderedCategories.slice(1), ...remainingCategories];
-  };
-
-  // Get unique categories from data
-  const categories = useMemo(() => getUniqueCategories(), [catalogs]);
+  }, [catalogs]);
 
   // Show preview banner if environment variable is set
   useEffect(() => {
@@ -220,10 +217,10 @@ export default function PreviewGeminiPage() {
                   className={`${styles.filterBtn} ${currentFilter === 'all' ? 'active' : ''}`}
                   onClick={() => setCurrentFilter('all')}
                 >
-                  All ({CATALOGS.length})
+                  All ({catalogs.length})
                 </button>
                 {categories.slice(1).map((category) => {
-                  const count = CATALOGS.filter(item => item.category === category).length;
+                  const count = catalogs.filter(item => item.category === category).length;
                   return (
                     <button 
                       key={category}

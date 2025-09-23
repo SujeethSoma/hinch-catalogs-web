@@ -35,13 +35,14 @@ export default function CatalogsPage() {
     fetchData();
   }, []);
 
-  // Helper functions for getting unique values
-  const getUniqueBrands = (): string[] => {
+
+  // Get unique brands and categories from data
+  const brands = useMemo(() => {
     const brands = Array.from(new Set(catalogs.map(item => item.brand))).sort();
     return ['All', ...brands];
-  };
-
-  const getUniqueCategories = (): string[] => {
+  }, [catalogs]);
+  
+  const categories = useMemo(() => {
     const categoryOrder = [
       "All",
       "Acrylic Laminates",
@@ -64,11 +65,7 @@ export default function CatalogsPage() {
     const orderedCategories = categoryOrder.filter(cat => categories.includes(cat as string));
     const remainingCategories = categories.filter(cat => !categoryOrder.includes(cat as typeof categoryOrder[number])).sort();
     return ['All', ...orderedCategories, ...remainingCategories];
-  };
-
-  // Get unique brands and categories from data
-  const brands = useMemo(() => getUniqueBrands(), [catalogs]);
-  const categories = useMemo(() => getUniqueCategories(), [catalogs]);
+  }, [catalogs]);
 
   // Calculate category counts
   const categoryCounts = useMemo(() => {

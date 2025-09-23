@@ -1,5 +1,13 @@
 import { CatalogItem } from '../_types';
 
+// Interface for the raw JSON data from GitHub
+interface RawCatalogData {
+  Catalogues_Name?: string;
+  Catalogues_Links?: string;
+  Category?: string;
+  Brands?: string;
+}
+
 export function extractDriveId(url: string): string {
     if (!url) return "";
     const m1 = url.match(/\/file\/d\/([\w-]+)/);
@@ -74,7 +82,7 @@ export async function loadCatalogData(): Promise<CatalogItem[]> {
     const rawData = allCategoryData.flat();
 
     // Transform the JSON structure into our CatalogItem format
-    return rawData.map((item: any, index: number) => {
+    return rawData.map((item: RawCatalogData, index: number) => {
       const name = item.Catalogues_Name;
       const brand = item.Brands;
       const category = item.Category;
@@ -85,7 +93,7 @@ export async function loadCatalogData(): Promise<CatalogItem[]> {
         title: name || 'Untitled Catalog',
         brand: brand || 'Unknown Brand',
         category: category || 'Uncategorized',
-        thumbnail: downloadLink ? thumbUrl(downloadLink) : undefined,
+        thumbnail: downloadLink ? thumbUrl(downloadLink) || undefined : undefined,
         previewUrl: downloadLink ? previewUrl(downloadLink) : undefined,
         downloadUrl: downloadLink ? downloadUrl(downloadLink) : undefined,
         description: `Explore our comprehensive ${category || 'Uncategorized'} collection from ${brand || 'Unknown Brand'}. This catalog showcases premium materials and finishes for modern interior design.`
