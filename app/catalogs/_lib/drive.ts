@@ -47,42 +47,20 @@ export function toDriveDirectPdf(url: string): string {
 
 export async function loadCatalogData(): Promise<CatalogItem[]> {
   try {
-    // List of all category JSON files from the GitHub catalogue_json directory
-    const categoryFiles = [
-      '360_Louvers.json',
-      'Acrylic_Laminates.json',
-      'Decorative_Laminates.json',
-      'Doors.json',
-      'Edge_Banding.json',
-      'Hardware.json',
-      'Liners.json',
-      'Louvers.json',
-      'Moulders.json',
-      'PVC_Laminates.json',
-      'Solid_Colour_Laminates.json',
-      'Thermo_Laminates.json',
-      'Ti_Patti.json',
-      'Veeners.json',
-      'Wall_Panels.json'
-    ];
-
-    // Fetch all category files from GitHub and combine the data (Vercel deployment test)
-    const allPromises = categoryFiles.map(async (filename) => {
-      try {
-        const response = await fetch(`https://raw.githubusercontent.com/SujeethSoma/hinch-catalogs-web/main/public/catalogue_json/${filename}`);
-        if (!response.ok) {
-          console.warn(`Failed to fetch ${filename}: ${response.status}`);
-          return [];
-        }
-        return await response.json();
-      } catch (error) {
-        console.warn(`Error fetching ${filename}:`, error);
-        return [];
-      }
-    });
-
-    const allCategoryData = await Promise.all(allPromises);
-    const rawData = allCategoryData.flat();
+    // For localhost: use local file, for production: use GitHub
+    const isLocalhost = typeof window !== 'undefined' && window.location.hostname === 'localhost';
+    const url = isLocalhost 
+      ? '/all_catalogs.json' 
+      : 'https://raw.githubusercontent.com/SujeethSoma/hinch-catalogs-web/main/all_catalogs.json';
+    
+    const response = await fetch(url);
+    
+    if (!response.ok) {
+      console.error(`Failed to fetch all_catalogs.json: ${response.status}`);
+      return [];
+    }
+    
+    const rawData = await response.json();
 
     // Transform the JSON structure into our CatalogItem format
     return rawData.map((item: RawCatalogData, index: number) => {
@@ -98,7 +76,7 @@ export async function loadCatalogData(): Promise<CatalogItem[]> {
       };
     });
   } catch (error) {
-    console.error('Error loading catalog data from GitHub:', error);
+    console.error('Error loading catalog data from all_catalogs.json:', error);
     return [];
   }
 }
